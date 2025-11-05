@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
-import { Film, UserPlus, Play } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Film, Play, UserPlus } from 'lucide-react';
+import { useState } from 'react';
 
 interface GameSetupProps {
   onStartGame: (playerNames: string[]) => void;
@@ -12,9 +12,7 @@ export const GameSetup = ({ onStartGame }: GameSetupProps) => {
   const [playerNames, setPlayerNames] = useState<string[]>(['', '', '']);
 
   const addPlayer = () => {
-    if (playerNames.length < 10) {
-      setPlayerNames([...playerNames, '']);
-    }
+    setPlayerNames([...playerNames, '']);
   };
 
   const removePlayer = (index: number) => {
@@ -41,7 +39,7 @@ export const GameSetup = ({ onStartGame }: GameSetupProps) => {
         </div>
 
         <div className="space-y-4 mb-6">
-          <h2 className="text-xl font-semibold">Add Players (3-10)</h2>
+          <h2 className="text-xl font-semibold">Add Players (minimum 3)</h2>
           {playerNames.map((name, index) => (
             <div key={index} className="flex gap-2">
               <Input
@@ -64,16 +62,14 @@ export const GameSetup = ({ onStartGame }: GameSetupProps) => {
         </div>
 
         <div className="flex gap-3">
-          {playerNames.length < 10 && (
-            <Button
-              variant="outline"
-              onClick={addPlayer}
-              className="flex-1"
-            >
-              <UserPlus className="w-4 h-4 mr-2" />
-              Add Player
-            </Button>
-          )}
+          <Button
+            variant="outline"
+            onClick={addPlayer}
+            className="flex-1"
+          >
+            <UserPlus className="w-4 h-4 mr-2" />
+            Add Player
+          </Button>
           <Button
             onClick={() => onStartGame(playerNames.filter(n => n.trim()))}
             disabled={!canStart}

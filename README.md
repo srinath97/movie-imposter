@@ -1,73 +1,61 @@
-# Welcome to your Lovable project
+# Movie Imposter
 
-## Project info
+A fun and interactive movie guessing game where you try to identify the imposter among a group of movies!
 
-**URL**: https://lovable.dev/projects/aa0eb862-0520-415a-b914-ba3bce073147
+## Project Overview
 
-## How can I edit this code?
+Movie Imposter challenges players to find the one movie that doesn't belong in a group. Test your movie knowledge and see how many rounds you can complete!
 
-There are several ways of editing your application.
+## Getting Started
 
-**Use Lovable**
+### Prerequisites
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/aa0eb862-0520-415a-b914-ba3bce073147) and start prompting.
+- Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-Changes made via Lovable will be committed automatically to this repo.
+### Installation & Running
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Follow these steps to run the project locally:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Step 1: Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Step 2: Navigate to the project directory
+cd flick-whoflix
 
-# Step 3: Install the necessary dependencies.
+# Step 3: Install the necessary dependencies
 npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Step 4: Start the development server with auto-reloading and an instant preview
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Available Scripts
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- `npm run dev` - Start the development server
+- `npm run build` - Build for production
+- `npm run build:dev` - Build in development mode
+- `npm run lint` - Run ESLint
+- `npm run preview` - Preview production build
 
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
+## Technologies Used
 
 This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Vite** - Fast build tool and development server
+- **TypeScript** - Type-safe JavaScript
+- **React** - UI framework
+- **shadcn-ui** - Beautiful UI components
+- **Tailwind CSS** - Utility-first CSS framework
 
-## How can I deploy this project?
+## How to Play
 
-Simply open [Lovable](https://lovable.dev/projects/aa0eb862-0520-415a-b914-ba3bce073147) and click on Share -> Publish.
+1. You'll be shown 4 movies
+2. Three movies share a common theme
+3. One movie is the imposter - it doesn't belong!
+4. Click on the movie you think is the imposter
+5. Try to complete as many rounds as possible!
 
-## Can I connect a custom domain to my Lovable project?
+## Contributing
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Feel free to submit issues and enhancement requests!
