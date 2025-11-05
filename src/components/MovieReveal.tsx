@@ -22,8 +22,8 @@ export const MovieReveal = ({ players, currentPlayerIndex, onNext }: MovieReveal
         <h2 className="text-3xl font-bold mb-2">{currentPlayer.name}'s Turn</h2>
         <p className="text-muted-foreground mb-8">
           {revealed 
-            ? "Press 'Hide & Continue' button and then pass the device to the next player"
-            : "Reveal your movie and pass the device to the next player"
+            ? "Remember your movie"
+            : "Pass the device to the next player"
           }
         </p>
 

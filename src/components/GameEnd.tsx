@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Player } from '@/types/game';
-import { Film, Flag, RotateCcw, Trophy, Users } from 'lucide-react';
+import { Clock, Film, Flag, RotateCcw, Trophy, Users } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 
 interface GameEndProps {
@@ -53,19 +53,22 @@ export const GameEnd = ({
           <h2 className="text-4xl font-bold mb-2">
             All Movies Revealed!
           </h2>
-
-          <div className="flex flex-col items-center justify-center mx-auto mb-6">
-            {/* <Clock className={`w-8 h-8 mb-2 ${timeLeft <= 10 ? 'text-destructive animate-pulse' : 'text-primary'}`} /> */}
-            <p className="text-sm text-muted-foreground mb-1">Time to think</p>
-            <p className={`text-4xl font-bold ${timeLeft <= 10 ? 'text-destructive' : 'text-primary'}`}>
-              {timeLeft}
-            </p>
-          </div>
           <p className="text-muted-foreground mb-6 text-lg">
             Here's the randomly selected player to start the game
           </p>
+
+          <div className="flex flex-col items-center justify-center mx-auto mb-6">
+            <Clock className={`w-8 h-8 mb-2 ${timeLeft <= 10 ? 'text-destructive animate-pulse' : 'text-primary'}`} />
+            <p className="text-sm text-muted-foreground mb-1">Time to think</p>
+            <p className={`text-4xl font-bold ${timeLeft <= 10 ? 'text-destructive' : 'text-primary'}`}>
+              {timeLeft}s
+            </p>
+          </div>
         
           <div className="bg-secondary/20 border-2 border-secondary p-8 rounded-lg mb-8">
+            <p className="text-sm font-semibold mb-3 uppercase tracking-wider">
+              Player to Start the Game
+            </p>
             <p className="text-4xl font-bold">{randomPlayer.name}</p>
           </div>
 
