@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Film, Eye, EyeOff } from 'lucide-react';
 import { Player } from '@/types/game';
+import { Eye, EyeOff, Film } from 'lucide-react';
+import { useState } from 'react';
 
 interface MovieRevealProps {
   players: Player[];
@@ -22,7 +22,7 @@ export const MovieReveal = ({ players, currentPlayerIndex, onNext }: MovieReveal
         <h2 className="text-3xl font-bold mb-2">{currentPlayer.name}'s Turn</h2>
         <p className="text-muted-foreground mb-8">
           {revealed 
-            ? "Remember your movie and give subtle clues"
+            ? "Remember your movie"
             : "Pass the device to the next player"
           }
         </p>

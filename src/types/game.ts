@@ -1,11 +1,10 @@
-export type GamePhase = 'setup' | 'reveal' | 'clues' | 'results';
+export type GamePhase = 'setup' | 'reveal' | 'end';
 
 export interface Player {
   id: string;
   name: string;
   movie: string;
   isImposter: boolean;
-  clue?: string;
 }
 
 export interface GameState {
@@ -14,5 +13,4 @@ export interface GameState {
   currentPlayerIndex: number;
   actualMovie: string;
   imposterMovie: string;
-  imposterGuess?: string;
 }
