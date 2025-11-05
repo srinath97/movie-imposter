@@ -1,0 +1,47 @@
+export const MOVIES = [
+  "The Shawshank Redemption",
+  "The Godfather",
+  "The Dark Knight",
+  "Pulp Fiction",
+  "Forrest Gump",
+  "Inception",
+  "The Matrix",
+  "Goodfellas",
+  "Fight Club",
+  "The Lord of the Rings",
+  "Star Wars",
+  "Jurassic Park",
+  "Titanic",
+  "Avatar",
+  "The Lion King",
+  "Toy Story",
+  "Finding Nemo",
+  "Frozen",
+  "The Avengers",
+  "Spider-Man",
+  "Iron Man",
+  "The Terminator",
+  "Back to the Future",
+  "Jaws",
+  "E.T.",
+  "Gladiator",
+  "The Silence of the Lambs",
+  "Saving Private Ryan",
+  "The Green Mile",
+  "Interstellar",
+  "The Prestige",
+  "Memento",
+  "Shutter Island",
+  "The Departed",
+  "Casablanca",
+  "Gone with the Wind",
+  "The Wizard of Oz",
+  "Psycho",
+  "Vertigo",
+  "Citizen Kane"
+];
+
+export const getRandomMovies = (count: number = 2): string[] => {
+  const shuffled = [...MOVIES].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, count);
+};
