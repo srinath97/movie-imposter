@@ -22,9 +22,7 @@ export const MovieReveal = ({ players, currentPlayerIndex, onNext }: MovieReveal
         <h2 className="text-3xl font-bold mb-2">{currentPlayer.name}'s Turn</h2>
         <p className="text-muted-foreground mb-8">
           {revealed 
-            ? currentPlayer.isImposter 
-              ? "You are the IMPOSTER! Keep it secret!" 
-              : "Remember your movie and give subtle clues"
+            ? "Remember your movie and give subtle clues"
             : "Pass the device to the next player"
           }
         </p>
@@ -40,13 +38,9 @@ export const MovieReveal = ({ players, currentPlayerIndex, onNext }: MovieReveal
           </Button>
         ) : (
           <div className="space-y-6">
-            <div className={`p-8 rounded-lg ${
-              currentPlayer.isImposter 
-                ? 'bg-destructive/10 border-2 border-destructive' 
-                : 'bg-primary/10 border-2 border-primary'
-            }`}>
+            <div className="p-8 rounded-lg bg-primary/10 border-2 border-primary">
               <p className="text-sm font-semibold mb-2 uppercase tracking-wider">
-                {currentPlayer.isImposter ? '🎭 Your Movie (Imposter)' : '🎬 Your Movie'}
+                🎬 Your Movie
               </p>
               <p className="text-3xl font-bold">{currentPlayer.movie}</p>
             </div>

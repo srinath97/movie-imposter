@@ -1,4 +1,4 @@
-export type GamePhase = 'setup' | 'reveal' | 'clues' | 'voting' | 'results';
+export type GamePhase = 'setup' | 'reveal' | 'clues' | 'results';
 
 export interface Player {
   id: string;
@@ -6,7 +6,6 @@ export interface Player {
   movie: string;
   isImposter: boolean;
   clue?: string;
-  votedFor?: string;
 }
 
 export interface GameState {

@@ -15,38 +15,20 @@ export const GameResults = ({
   players, 
   actualMovie, 
   imposterMovie, 
-  imposterGuess,
   onPlayAgain 
 }: GameResultsProps) => {
   const imposter = players.find(p => p.isImposter)!;
-  
-  // Count votes for imposter
-  const votesForImposter = players.filter(p => p.votedFor === imposter.id).length;
-  
-  // Check if imposter guessed correctly
-  const imposterGuessedCorrect = imposterGuess?.toLowerCase().trim() === actualMovie.toLowerCase().trim();
-  
-  // Determine winner
-  const imposterWon = imposterGuessedCorrect;
-  const playersWon = votesForImposter >= Math.ceil(players.length / 2);
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-background via-background to-muted">
       <Card className="w-full max-w-2xl p-8 shadow-2xl">
-        <Trophy className={`w-16 h-16 mx-auto mb-4 ${
-          imposterWon ? 'text-destructive' : 'text-primary'
-        }`} />
+        <Trophy className="w-16 h-16 mx-auto mb-4 text-primary" />
         
         <h2 className="text-4xl font-bold mb-2 text-center">
-          {imposterWon ? 'Imposter Wins!' : playersWon ? 'Players Win!' : 'No Winner!'}
+          Game Over!
         </h2>
         <p className="text-muted-foreground mb-8 text-center text-lg">
-          {imposterWon 
-            ? `${imposter.name} guessed the movie correctly!`
-            : playersWon
-            ? `The players found the imposter!`
-            : `Not enough votes to catch the imposter!`
-          }
+          Review all the clues and reveal the imposter!
         </p>
 
         <div className="space-y-6 mb-8">
@@ -58,12 +40,6 @@ export const GameResults = ({
             <div className="space-y-2">
               <p><span className="font-semibold">Actual Movie:</span> {actualMovie}</p>
               <p><span className="font-semibold">Imposter's Movie:</span> {imposterMovie}</p>
-              {imposterGuess && (
-                <p className={imposterGuessedCorrect ? 'text-primary font-semibold' : 'text-muted-foreground'}>
-                  <span className="font-semibold">Imposter's Guess:</span> {imposterGuess} 
-                  {imposterGuessedCorrect && ' ✓'}
-                </p>
-              )}
             </div>
           </div>
 
@@ -73,17 +49,12 @@ export const GameResults = ({
           </div>
 
           <div className="bg-muted/50 p-6 rounded-lg">
-            <h3 className="font-semibold mb-4">Vote Results:</h3>
+            <h3 className="font-semibold mb-4">All Clues:</h3>
             <div className="space-y-2">
               {players.map(player => (
-                <div key={player.id} className="bg-background p-3 rounded flex justify-between">
-                  <span className="font-semibold">{player.name}</span>
-                  <span className="text-muted-foreground">
-                    {player.isImposter 
-                      ? `Guessed: ${imposterGuess || 'No guess'}`
-                      : `Voted: ${players.find(p => p.id === player.votedFor)?.name || 'None'}`
-                    }
-                  </span>
+                <div key={player.id} className="bg-background p-3 rounded">
+                  <span className="font-semibold">{player.name}:</span>{' '}
+                  <span className="text-muted-foreground">{player.clue}</span>
                 </div>
               ))}
             </div>

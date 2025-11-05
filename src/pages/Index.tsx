@@ -4,7 +4,6 @@ import { getRandomMovies } from '@/data/movies';
 import { GameSetup } from '@/components/GameSetup';
 import { MovieReveal } from '@/components/MovieReveal';
 import { CluePhase } from '@/components/CluePhase';
-import { VotingPhase } from '@/components/VotingPhase';
 import { GameResults } from '@/components/GameResults';
 
 const Index = () => {
@@ -65,29 +64,7 @@ const Index = () => {
       setGameState({
         ...gameState,
         players: updatedPlayers,
-        phase: 'voting',
-        currentPlayerIndex: 0,
-      });
-    }
-  };
-
-  const submitVote = (votedPlayerId: string, imposterGuess?: string) => {
-    const updatedPlayers = [...gameState.players];
-    updatedPlayers[gameState.currentPlayerIndex].votedFor = votedPlayerId;
-
-    if (gameState.currentPlayerIndex < gameState.players.length - 1) {
-      setGameState({
-        ...gameState,
-        players: updatedPlayers,
-        currentPlayerIndex: gameState.currentPlayerIndex + 1,
-        imposterGuess: imposterGuess || gameState.imposterGuess,
-      });
-    } else {
-      setGameState({
-        ...gameState,
-        players: updatedPlayers,
         phase: 'results',
-        imposterGuess: imposterGuess || gameState.imposterGuess,
       });
     }
   };
@@ -117,14 +94,6 @@ const Index = () => {
           players={gameState.players}
           currentPlayerIndex={gameState.currentPlayerIndex}
           onSubmitClue={submitClue}
-        />
-      )}
-      {gameState.phase === 'voting' && (
-        <VotingPhase
-          players={gameState.players}
-          currentPlayerIndex={gameState.currentPlayerIndex}
-          onVote={submitVote}
-          actualMovie={gameState.actualMovie}
         />
       )}
       {gameState.phase === 'results' && (
