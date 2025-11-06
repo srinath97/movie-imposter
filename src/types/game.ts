@@ -1,4 +1,4 @@
-export type GamePhase = 'setup' | 'reveal' | 'end';
+export type GamePhase = 'howToPlay' | 'setup' | 'reveal' | 'end';
 
 export interface Player {
   id: string;

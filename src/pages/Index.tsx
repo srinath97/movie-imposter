@@ -1,5 +1,6 @@
 import { GameEnd } from '@/components/GameEnd';
 import { GameSetup } from '@/components/GameSetup';
+import { HowToPlay } from '@/components/HowToPlay';
 import { MovieReveal } from '@/components/MovieReveal';
 import { getRandomMovies } from '@/data/movies';
 import { GameState, Player } from '@/types/game';
@@ -8,12 +9,19 @@ import { useState } from 'react';
 const Index = () => {
   const [playerNames, setPlayerNames] = useState<string[]>([]);
   const [gameState, setGameState] = useState<GameState>({
-    phase: 'setup',
+    phase: 'howToPlay',
     players: [],
     currentPlayerIndex: 0,
     actualMovie: '',
     imposterMovie: '',
   });
+
+  const showSetup = () => {
+    setGameState(prev => ({
+      ...prev,
+      phase: 'setup',
+    }));
+  };
 
   const startGame = (names: string[]) => {
     setPlayerNames(names);
@@ -60,6 +68,7 @@ const Index = () => {
 
   return (
     <>
+      {gameState.phase === 'howToPlay' && <HowToPlay onStartSetup={showSetup} />}
       {gameState.phase === 'setup' && <GameSetup onStartGame={startGame} />}
       {gameState.phase === 'reveal' && (
         <MovieReveal
