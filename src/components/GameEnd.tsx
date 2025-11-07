@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Player } from '@/types/game';
-import { Film, Flag, RotateCcw, Trophy, Users } from 'lucide-react';
+import { Flag, RotateCcw, Trophy, Users } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 
 interface GameEndProps {
@@ -95,35 +95,22 @@ export const GameEnd = ({
         </p>
 
         <div className="space-y-6 mb-8">
-          <div className="bg-primary/10 border-2 border-primary p-6 rounded-lg">
-            <div className="flex items-center gap-2 mb-2">
-              <Film className="w-5 h-5 text-primary" />
-              <h3 className="font-semibold text-lg">The Movies</h3>
-            </div>
-            <div className="space-y-2">
-              <p><span className="font-semibold">Actual Movie:</span> {actualMovie}</p>
-              <p><span className="font-semibold">Imposter's Movie:</span> {imposterMovie}</p>
-            </div>
+            <div className="space-y-4">
+              <div className="bg-green-100 dark:bg-green-900/30 border-2 border-green-500 p-4 rounded-lg">
+                <p className="text-sm font-semibold mb-2">Actual Movie:</p>
+                <p className="text-2xl font-bold">{actualMovie}</p>
+              </div>
+              <div className="bg-red-100 dark:bg-red-900/30 border-2 border-red-500 p-4 rounded-lg">
+                <p className="text-sm font-semibold mb-2">Imposter's Movie:</p>
+                <p className="text-2xl font-bold">{imposterMovie}</p>
+              </div>
           </div>
 
-          <div className="bg-destructive/10 border-2 border-destructive p-6 rounded-lg">
+          <div className="border-2 border-destructive p-6 rounded-lg">
             <h3 className="font-semibold text-lg mb-3">The Imposter Was...</h3>
-            <p className="text-2xl font-bold text-destructive">{imposter.name}</p>
+            <p className="text-3xl font-bold text-destructive">{imposter.name}</p>
           </div>
 
-          <div className="bg-muted/50 p-6 rounded-lg">
-            <h3 className="font-semibold mb-4">All Players:</h3>
-            <div className="space-y-2">
-              {players.map(player => (
-                <div key={player.id} className="bg-background p-3 rounded flex justify-between items-center">
-                  <span className="font-semibold">{player.name}</span>
-                  <span className={`text-sm ${player.isImposter ? 'text-destructive' : 'text-muted-foreground'}`}>
-                    {player.isImposter ? '🎭 Imposter' : '🎬 Regular'}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
 
         <Button
